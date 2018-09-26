@@ -1,0 +1,15 @@
+<div data-controller="sessions" class="sessions-controller justify-content-md-center">
+  <div class="text-center sessions-controller-container col-lg-6">
+
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), class: 'form-signin', data: { confirm: 'Are you sure?', valueneeded: 'asassasa' }) do |f| %>
+      <h1 class="h3 mb-3 font-weight-normal">Please sign up</h1>
+      <%= f.label :email, class: 'sr-only' %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control' %>
+
+      <%= f.label :password, class: 'sr-only' %><br />
+      <%= f.password_field :password, autocomplete: 'current-password', class: 'form-control' %>
+
+      <%= f.submit "Sign up", class: 'btn btn-lg btn-primary btn-block mt-5' %>
+    <% end %>
+  </div>
+</div>

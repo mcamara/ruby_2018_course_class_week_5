@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Example Ruby Class Week 5</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <%= link_to 'Teams Manager', root_path, class: 'navbar-brand' %>
+
+      <div class="navbar-collapse" id="Teams Manager">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <%= link_to 'Browse teams', root_path, class: 'nav-link' %>
+          </li>
+          <% if current_user %>
+            <li class="nav-item pull-right">
+              <%= link_to 'Sign out', destroy_user_session_url, method: :delete, class: 'nav-link' %>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <%= link_to 'Sign in', new_user_session_url, class: 'nav-link' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'Sign up', new_user_registration_url, class: 'nav-link' %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </nav>
+    <div class="main-container container">
+      <% if alert %>
+        <%= content_tag :div, alert, class: "alert alert-danger" %>
+      <% end %>
+      <% if notice %>
+        <%= content_tag :div, notice, class: "alert alert-primary" %>
+      <% end %>
+      <%= yield %>
+    </div>
+  </body>
+</html>
